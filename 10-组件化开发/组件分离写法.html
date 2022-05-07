@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<template id="bihu">
+    <div>
+        <h2>分离写法</h2>
+        <p>你懂我的期待。</p>
+    </div>
+</template>
+
+<div id="app">
+    <m-cpn></m-cpn>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+    //注册一个全局组件
+    Vue.component('m-cpn',{
+        template:'#bihu'
+    })
+
+    const app = new Vue({
+        el:"#app"
+    })
+
+</script>
+</body>
+</html>
