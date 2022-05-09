@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+
+<div id="app">
+    <cpn :cmovies="movies" :cmessage="message"></cpn>
+    <cpn></cpn>
+
+    <!--    未传 cmessage 会展示默认值-->
+    <cpn :cmovies="movies"></cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <!--        <p>{{cmovies}}</p>-->
+        <ul v-for="item in cmovies">
+            <li>{{item}}</li>
+        </ul>
+        <h2>{{cmessage}}</h2>
+    </div>
+</template>
+
+<script>
+
+    //父传子
+    const cpn = {
+        template: '#cpn',
+        data() {
+            return {}
+        },
+        // 数组形式
+        // props: ['cmovies','cmessage']
+
+        // 类型限制对象
+        // props: {
+        //     cmovies: Array,
+        //     cmessage: String
+        // }
+
+        // 类型默认值
+        props: {
+            cmovies: {
+                // 当数组有默认值的时候，default应该是一个函数
+                type: Array,
+                default(){
+                    return []
+                }
+            },
+            cmessage: {
+                type: String,
+                default: 'aaaaaa',
+                //使用该组件 必传
+                // required: true
+            }
+        }
+    }
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello',
+            movies: [
+                'haiwang', 'haiwen', 'tgems'
+            ]
+        },
+        components: {
+            cpn
+        }
+    })
+
+</script>
+
+</body>
+</html>
