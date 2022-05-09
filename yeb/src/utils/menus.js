@@ -1,6 +1,3 @@
-import {api} from "@/utils/request";
-import store from "@/store";
-import router from "@/router";
 import {getRoute} from "../../api/login";
 
 export const initMenu = (router, store) => {
